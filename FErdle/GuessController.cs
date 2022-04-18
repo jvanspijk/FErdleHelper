@@ -15,7 +15,6 @@ namespace FErdle
         private int _selectedPosition;
         private WordleLetter[] _guess;
 
-
         private bool _guessConfirmed;
         private bool _escapePressed;
         
@@ -147,7 +146,6 @@ namespace FErdle
                         break;
                     default:
                         throw new Exception();
-                        break;
                 }
                 index++;
             }
