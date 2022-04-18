@@ -5,12 +5,9 @@ namespace FErdle
     class Program
     {
         static void Main(string[] args)
-        {            
-            Menu menu = new Menu();
-            while(menu.end == false)
-            {
-                menu.ShowMenu();
-            }
+        {
+            Game game = new Game();
+            game.Run();
             Environment.Exit(0);
         }       
     }

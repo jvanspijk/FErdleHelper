@@ -72,13 +72,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Decision.cs" />
-    <Compile Include="Menu.cs" />
+    <Compile Include="Colors.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="GuessController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\GuessView.cs" />
     <Compile Include="View\InputReader.cs" />
-    <Compile Include="View\MenuChoices.cs" />
-    <Compile Include="View\MenuWord.cs" />
+    <Compile Include="MenuChoices.cs" />
+    <Compile Include="View\MainView.cs" />
+    <Compile Include="WordleLetter.cs" />
     <Compile Include="WordList.cs" />
   </ItemGroup>
   <ItemGroup>

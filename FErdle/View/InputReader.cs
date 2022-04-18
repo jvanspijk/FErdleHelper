@@ -32,7 +32,12 @@ namespace FErdle.View
             try
             {
                 input = Convert.ToChar(Console.ReadLine());
-                return Char.ToLower(input);
+                input = Char.ToLower(input);
+                if (input >= 'a' && input <= 'z')
+                {
+                    return input;
+                }
+                Console.WriteLine("Enter a letter please");
             }
             catch
             {
@@ -60,6 +65,35 @@ namespace FErdle.View
             }
             Console.WriteLine("Error in TryReadInt");
             return '0';
+        }
+
+        public static ConsoleKey TryReadGuessMenu()
+        {
+            List<ConsoleKey> possibleKeys = new List<ConsoleKey>() { ConsoleKey.Escape, ConsoleKey.UpArrow, ConsoleKey.DownArrow, ConsoleKey.LeftArrow, ConsoleKey.RightArrow, ConsoleKey.Enter };
+
+            var ch = Console.ReadKey(false).Key;
+            try
+            {
+                if(possibleKeys.Contains(ch))
+                {
+                    return ch;
+                }
+                else
+                {
+                    TryReadGuessMenu();
+                }
+            }
+            catch
+            {
+                TryReadGuessMenu();
+            }
+            return ch;
+        }
+
+        public static void WaitForUserInput()
+        {            
+            Console.ReadLine();
+            Console.Clear();
         }
 
     }

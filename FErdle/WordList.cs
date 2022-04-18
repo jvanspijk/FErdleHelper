@@ -34,12 +34,12 @@ namespace FErdle
 
         public void AnswerHasLetterNotOnPosition(char letter, int pos)
         {            
-            possibleAnswers = possibleAnswers.Where(word => word.Contains(letter) && word[pos-1] != letter);           
+            possibleAnswers = possibleAnswers.Where(word => word.Contains(letter) && word[pos] != letter);           
         }
 
         public void AnswerHasLetterOnPosition(char letter, int pos)
         {
-            possibleAnswers = possibleAnswers.Where(word => word[pos-1] == letter);
+            possibleAnswers = possibleAnswers.Where(word => word[pos] == letter);
         }
 
         public void AnswerDoesNotHaveLetter(char letter)
@@ -52,27 +52,9 @@ namespace FErdle
             possibleAnswers = answers;
         }
 
-        public void ShowPossibleAnswers()
-        {            
-            const int CUT_OFF = 16;            
-            Console.WriteLine(possibleAnswers.Count() + " possible answers:");
-            int wordCount = 0;
-            
-            foreach (string word in possibleAnswers)
-            {
-                if(wordCount > 0 && wordCount%CUT_OFF == 0)
-                {
-                    Console.WriteLine();
-                }
-                Console.Write(word);
-                Console.Write(", ");
-                wordCount++;
-            }
-
-            Console.WriteLine("");
-            Console.WriteLine("Press Enter to continue...");            
-            Console.ReadLine();
-            Console.Clear();
+        public IEnumerable<string> GetPossibleAnswers()
+        {
+            return possibleAnswers;
         }
 
        
