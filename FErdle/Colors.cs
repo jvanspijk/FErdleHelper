@@ -1,4 +1,4 @@
-﻿namespace FErdle
+﻿namespace FErdleHelper
 {
     public enum Colors
     {

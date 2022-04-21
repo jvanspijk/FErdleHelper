@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FErdleHelper;
 
-namespace FErdle.View
+namespace FErdleHelper.View
 {
     public class GuessView
     {      
@@ -33,8 +28,7 @@ namespace FErdle.View
             Console.WriteLine("↓ ↓ ↓ ↓ ↓");
             Console.WriteLine("");
             Console.WriteLine("Press ESCAPE to go back, press ENTER to confirm your selection.");
-            SetCursorPosition(selectedPosition);
-            
+            SetCursorPosition(selectedPosition);            
         }
 
         public void Clear()
@@ -44,8 +38,7 @@ namespace FErdle.View
 
         public void ShowWordSizeError()
         {            
-            Console.WriteLine("Please enter a word that is " + ProgramSettings.WORD_LENGTH + " characters long");
-            Console.WriteLine("Press ENTER to try again");
+            Console.WriteLine("Please enter a word that is " + ProgramSettings.WORD_LENGTH + " characters long");            
             InputReader.WaitForUserInput();
         }
 

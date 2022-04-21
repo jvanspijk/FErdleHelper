@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace FErdle.View
+namespace FErdleHelper.View
 {
     public static class InputReader
     {
@@ -30,7 +30,7 @@ namespace FErdle.View
             try
             {
                 input = Convert.ToChar(Console.ReadLine());
-                input = Char.ToLower(input);
+                input = char.ToLower(input);
                 if (input >= 'a' && input <= 'z')
                 {
                     return input;
@@ -89,7 +89,8 @@ namespace FErdle.View
         }
 
         public static void WaitForUserInput()
-        {            
+        {
+            Console.WriteLine("Press Enter to continue...");
             Console.ReadLine();
             Console.Clear();
         }

@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FErdle.View;
+using FErdleHelper.View;
 
-namespace FErdle
+namespace FErdleHelper
 {
     public class Game
     {
-        private MainView _view;       
+        private MainView _view;
+        private StatsView _statsView;
         private WordList _words;
         private GuessController _guessController;
 
@@ -19,6 +17,7 @@ namespace FErdle
         {
             GameRunning = true;
             _view = new MainView();
+            _statsView = new StatsView();
             _words = new WordList();
         }
 
@@ -42,6 +41,9 @@ namespace FErdle
                 case MenuChoices.SHOW_ANSWERS:
                     ShowAnswers();
                     break;
+                case MenuChoices.MOST_OCCURING_CHARS:
+                    OpenCharCountScreen();
+                    break;
                 case MenuChoices.RESTART:
                     RestartGame();
                     break;
@@ -54,7 +56,25 @@ namespace FErdle
             }
             _view.ClearView();
         }
-        
+
+        private void OpenCharCountScreen()
+        {
+            _statsView.AskForAmountOfChars();
+            int amountCh = InputReader.TryReadInt();
+            _view.ClearView();
+            ShowMostOccurringChars(amountCh);            
+        }
+
+        private void ShowMostOccurringChars(int amountCh)
+        {
+            List<char> chars = _words.GetMostOccurringCharacters(amountCh);
+            foreach(char ch in chars)
+            {
+                _statsView.ShowCharAndOccurance(ch, _words.CountOccurrancesOfChar(ch));
+            }
+            _statsView.ShowExitMessage();
+        }
+
         private void OpenGuessMenu()
         {
             _guessController = new GuessController(_words);
@@ -64,7 +84,7 @@ namespace FErdle
 
         private void ShowAnswers()
         {
-            _view.ShowPossibleAnswers(_words.GetPossibleAnswers());
+            _statsView.ShowPossibleAnswers(_words.GetPossibleAnswers());
         }
 
         private void RestartGame()

@@ -1,8 +1,7 @@
 ﻿using System;
-using FErdle.View;
-using FErdleHelper;
+using FErdleHelper.View;
 
-namespace FErdle
+namespace FErdleHelper
 {
     public class GuessController
     {

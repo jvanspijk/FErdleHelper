@@ -82,6 +82,7 @@
     <Compile Include="View\InputReader.cs" />
     <Compile Include="MenuChoices.cs" />
     <Compile Include="View\MainView.cs" />
+    <Compile Include="View\StatsView.cs" />
     <Compile Include="WordleLetter.cs" />
     <Compile Include="WordList.cs" />
   </ItemGroup>

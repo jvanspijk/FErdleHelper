@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FErdle
+namespace FErdleHelper
 {
     public class WordList
     {
@@ -57,8 +57,32 @@ namespace FErdle
             return possibleAnswers;
         }
 
-       
+       public List<char> GetMostOccurringCharacters(int amountCharsToReturn)
+        {
+            Dictionary<char, int> mostOccurringCharacters = new Dictionary<char, int>();            
+            for (char ch = 'a'; ch <= 'z'; ch++)
+            {
+                mostOccurringCharacters.Add(ch, CountOccurrancesOfChar(ch));
+            }
+            amountCharsToReturn = NormalizeAmountOfCharsToReturn(amountCharsToReturn, mostOccurringCharacters.Count());   
+            
 
+            return mostOccurringCharacters.OrderByDescending(ch => ch.Value)
+                                      .Select(ch => ch.Key)
+                                      .Take(amountCharsToReturn).ToList();
+        }
 
+        private int NormalizeAmountOfCharsToReturn(int amountCharsToReturn, int listSize)
+        {
+            int amountChars = Math.Min(amountCharsToReturn, 26);
+            amountChars = Math.Min(amountChars, listSize);
+            amountChars = Math.Max(1, amountChars);
+            return amountChars;
+        }
+
+        public int CountOccurrancesOfChar(char ch)
+        {
+            return possibleAnswers.Where(word => word.Contains(ch)).Count();            
+        }       
     }
 }
