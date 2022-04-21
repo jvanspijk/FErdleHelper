@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FErdle.View;
+using FErdleHelper;
 
 namespace FErdle
 {
     public class GuessController
     {
-        private const int WORD_LENGTH = 5;
-
         private GuessView _view;
         private int _selectedPosition;
         private WordleLetter[] _guess;
@@ -23,14 +18,33 @@ namespace FErdle
         public GuessController(WordList wordList)
         {
             _wordList = wordList;
+            _view = new GuessView();
         }
 
         public void FillInGuess()
         {
-            _view = new GuessView();
+            string guess;
+            while (true)
+            {
+                guess = AskForGuess();
+                if(guess.Length == ProgramSettings.WORD_LENGTH)
+                {
+                    _guess = ConvertStringToWordleArray(guess);
+                    break;
+                }
+                else
+                {
+                    _view.ShowWordSizeError();
+                    _view.Clear();
+                }               
+            }                              
+        }
+
+        private string AskForGuess()
+        {
             _view.AskGuessedWord();
             string guess = InputReader.TryReadString();
-            _guess = ConvertStringToWordleArray(guess);                      
+            return guess;
         }
 
         public void ChangeGuessColors()
@@ -90,9 +104,10 @@ namespace FErdle
 
         private WordleLetter[] ConvertStringToWordleArray(string guess)
         {
+            int wordLength = ProgramSettings.WORD_LENGTH;
             char[] guessArray = guess.ToCharArray();
-            WordleLetter[] wordleGuess = new WordleLetter[5];
-            for (int i = 0; i < 5; i++)
+            WordleLetter[] wordleGuess = new WordleLetter[wordLength];
+            for (int i = 0; i < wordLength; i++)
             {
                 wordleGuess[i] = new WordleLetter(guessArray[i]);
             }
@@ -100,7 +115,7 @@ namespace FErdle
         }
         public void SelectNext()
         {
-            if (_selectedPosition >= WORD_LENGTH - 1)
+            if (_selectedPosition >= ProgramSettings.WORD_LENGTH - 1)
             {
                 _selectedPosition = 0;
                 return;
@@ -112,7 +127,7 @@ namespace FErdle
         {
             if (_selectedPosition <= 0)
             {
-                _selectedPosition = WORD_LENGTH - 1;
+                _selectedPosition = ProgramSettings.WORD_LENGTH - 1;
                 return;
             }
             _selectedPosition--;

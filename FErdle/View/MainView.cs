@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FErdleHelper;
 
 namespace FErdle.View
 {
@@ -11,7 +12,7 @@ namespace FErdle.View
         public MainView()
         {
             Console.Clear();
-            Console.SetWindowSize(120, 40);
+            Console.SetWindowSize(ProgramSettings.WINDOW_WIDTH, ProgramSettings.WINDOW_HEIGHT);
         }
         public void ShowMainMenu()
         {

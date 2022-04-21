@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FErdleHelper;
 
 namespace FErdle.View
 {
@@ -34,6 +35,18 @@ namespace FErdle.View
             Console.WriteLine("Press ESCAPE to go back, press ENTER to confirm your selection.");
             SetCursorPosition(selectedPosition);
             
+        }
+
+        public void Clear()
+        {
+            Console.Clear();
+        }
+
+        public void ShowWordSizeError()
+        {            
+            Console.WriteLine("Please enter a word that is " + ProgramSettings.WORD_LENGTH + " characters long");
+            Console.WriteLine("Press ENTER to try again");
+            InputReader.WaitForUserInput();
         }
 
         private void UseDefaultColor()
