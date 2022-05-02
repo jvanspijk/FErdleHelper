@@ -20,7 +20,8 @@ namespace FErdleHelper.View
             foreach(WordleLetter letter in word)
             {
                 SetLetterColor(letter.Color);                
-                Console.Write(letter.Value + " ");
+                //Console.Write(letter.Value + " ");
+                Console.Write($"{ letter.Value } ");
                 UseDefaultColor();
             }
             
@@ -38,7 +39,7 @@ namespace FErdleHelper.View
 
         public void ShowWordSizeError()
         {            
-            Console.WriteLine("Please enter a word that is " + ProgramSettings.WORD_LENGTH + " characters long");            
+            Console.WriteLine($"Please enter a word that is { ProgramSettings.WORD_LENGTH } characters long");            
             InputReader.WaitForUserInput();
         }
 

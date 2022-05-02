@@ -19,7 +19,7 @@ namespace FErdleHelper.View
         public void ShowPossibleAnswers(IEnumerable<string> possibleAnswers)
         {
             const int CUT_OFF = 16;
-            Console.WriteLine(possibleAnswers.Count() + " possible answers:");
+            Console.WriteLine($"{ possibleAnswers.Count() } possible answers:");
             int wordCount = 0;
 
             foreach (string word in possibleAnswers)
@@ -28,8 +28,7 @@ namespace FErdleHelper.View
                 {
                     Console.WriteLine("");
                 }
-                Console.Write(word);
-                Console.Write(", ");
+                Console.Write($"{ word }, ");                
                 wordCount++;
             }
 
@@ -38,8 +37,8 @@ namespace FErdleHelper.View
         }
 
         public void ShowCharAndOccurance(char ch, int occurrances)
-        {
-            Console.WriteLine(ch + ": " + occurrances + " occurrances found");
+        {            
+            Console.WriteLine($"{ ch }: { occurrances } occurances found.");
         }
 
         public void ShowExitMessage()
