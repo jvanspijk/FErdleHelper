@@ -73,6 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Colors.cs" />
+    <Compile Include="Data\FireEmblemWords.cs" />
+    <Compile Include="IFileReader.cs" />
+    <Compile Include="TextFileReader.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GuessController.cs" />
     <Compile Include="Program.cs" />

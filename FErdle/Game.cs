@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using FErdleHelper.View;
+using FErdleHelper.Data;
 
 namespace FErdleHelper
 {
@@ -19,6 +20,8 @@ namespace FErdleHelper
             _view = new MainView();
             _statsView = new StatsView();
             _words = new WordList();
+            _words.AddWordlist(FireEmblemWords.Words);
+            _words.InitPossibleAnswers();
         }
 
         public void Run()
